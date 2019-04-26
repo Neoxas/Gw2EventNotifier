@@ -1,0 +1,17 @@
+# # ---
+# # !!python/object:__main__.Event
+--- 
+!Event
+  name: Test
+  times: [ "00:00", "00:30" ]
+# # ---
+# # !!python/object:__main__.Event
+--- !Event
+  name: Test2
+  times: [ "01:00", "02:00" ]
+
+# This makes a dict, which could be converted
+# ---
+# Event:
+#   name: Test
+#   times: [ 00:00, 00:30 ]
