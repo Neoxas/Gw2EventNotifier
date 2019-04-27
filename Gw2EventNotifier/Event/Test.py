@@ -8,7 +8,9 @@ yaml.add_representer( Event, event_representer )
 
 def event_constructor( loader, node ):
 	print( node )
-	fields = loader.construct_mapping(node)
+	# Deep maping description here
+	# https://stackoverflow.com/questions/43812020/what-does-deep-true-do-in-pyyaml-loader-construct-mapping
+	fields = loader.construct_mapping(node, deep=True)
 	print( fields )
 	print( fields['times'])
 	# Something strange is going on here
