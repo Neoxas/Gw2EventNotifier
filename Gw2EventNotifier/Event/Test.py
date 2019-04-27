@@ -1,5 +1,9 @@
 import yaml
 from Event import Event
+import ConfigLoader
+
+events = ConfigLoader.load_config( 
+        'EventConfig.yaml' )
 
 def event_representer( dumper, data ):
 	return dumper.represent_scalar( '!Event', data)
