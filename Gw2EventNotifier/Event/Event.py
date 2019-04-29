@@ -14,7 +14,6 @@ class Event:
 		self.__rawTimes = times
 		self.__fired = False
 		self.__display = False
-		print(self.__rawTimes)
 		self.__times = self.__convertTime( self.__rawTimes )
 
 	def __repr__(self):
