@@ -36,9 +36,11 @@ def ScrollEvent( message: str ):
 while True:
 	# Update all events
 	for event in BossEvents.BossEvents:
-            if( event.WithinWindow() and not event.HasFired() ):
+            if( event.WithinWindow() 
+                and event.ToDisplay()
+                and not event.Fired() ):
                     _EVENT_QUEUE.insert( event, 0 )
-                    event.Fired()
+                    event.Displayed()
          
         # If there is anything in the queue, trigger it to scroll
         if any _EVENT_QUEUE:

@@ -27,24 +27,27 @@ class Event:
 				time.strptime( eventTime, "%H:%M" ) )
 		return _tmp
 
-	def Name( self ):
+	def Name( self ) -> str:
 		return self.__name;
 
-	def Times( self ):
+	def Times( self ) -> List[ datetime ]:
 		# This occurs here due to (potential) lazy load problem with yaml
 		return self.__convertTime( self.__rawTimes );
 
-	def RawTimes( self ):
+	def RawTimes( self ) -> List[ str ]:
 		return self.__rawTimes;
 
 	""" Has the event fired?"""
-	def Fired(self):
+	def Fired(self) -> bool:
 		return self.__fired
 
 	"""Should the event be displayed
 	   Should be checked after WithinWindow"""
-	def ToDisplay(self):
+	def ToDisplay(self) -> bool:
 		return self.__display
+        
+        def Displayed( self ):
+            self.__display = True
 
 	"""Reset the event"""
 	def Reset(self):
@@ -58,7 +61,7 @@ class Event:
 
 
 	"""Is the event within this window"""
-	def WithinWindow(self):
+	def WithinWindow(self) -> bool:
 		# Check if any items within the times match the current window
 		# Current time
 		currentTime = datetime.datetime.now();
@@ -80,3 +83,4 @@ class Event:
 			# If positive and within window, needs to be displayed
 			if minutes_delta > 0  and minutes_delta < self.__TIME_BEFORE_SHOW:
 				self.__display = True
+                return self.__display
